@@ -3,16 +3,18 @@
 cls
 for /f "tokens=4*" %%A in ('ver') do set ver=%%A
 IF "%ver%" LSS "10.0.14393*]" (echo 需要Win10 1607及以上操作系统才能使用此脚本！&& exit)
-title 热点管理 By 2096779623
+title 热点管理器 By 2096779623
 echo =====================
 echo 1.开启/关闭热点
 echo 2.修改热点设置
 echo 3.查看已连接设备
+echo 4.关于
 echo =====================
 set /p input=请输入你要执行的操作：
 if %input% equ 1 goto enaordishotspot
 if %input% equ 2 goto changehotspotsettings
 if %input% equ 3 goto showdevice
+if %input% equ 4 goto about
 pause
 goto menu
 
@@ -59,5 +61,13 @@ echo 当前已连接的设备数：%Client%
 echo 最大支持连接设备数：%MaxClient%
 powershell.exe -executionpolicy remotesigned -File "%cd%\device.ps1"
 echo =====================
+pause
+goto menu
+
+:about
+cls
+echo 开源地址：https://github.com/2096779623/hotspotmanager
+echo.
+type LICENSE
 pause
 goto menu
