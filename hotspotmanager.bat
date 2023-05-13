@@ -68,7 +68,7 @@ goto menu
 
 :about
 cls
-echo 开源地址：https://github.com/2096779623/hotspotmanager
+echo 源代码地址：https://github.com/2096779623/hotspotmanager
 echo.
 type LICENSE
 pause
