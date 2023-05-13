@@ -2,16 +2,16 @@
 @echo off
 cls
 for /f "tokens=4*" %%A in ('ver') do set ver=%%A
-IF "%ver%" LSS "10.0.14393*]" (echo éœ€è¦Win10 1607åŠä»¥ä¸Šæ“ä½œç³»ç»Ÿæ‰èƒ½ä½¿ç”¨æ­¤è„šæœ¬ï¼&& exit)
-title çƒ­ç‚¹ç®¡ç†å™¨ By 2096779623
+IF "%ver%" LSS "10.0.14393*]" (echo ĞèÒªWin10 1607¼°ÒÔÉÏ²Ù×÷ÏµÍ³²ÅÄÜÊ¹ÓÃ´Ë½Å±¾£¡&& exit)
+title ÈÈµã¹ÜÀíÆ÷ By 2096779623
 echo =====================
-echo 1.å¼€å¯/å…³é—­çƒ­ç‚¹
-echo 2.ä¿®æ”¹çƒ­ç‚¹è®¾ç½®
-echo 3.æŸ¥çœ‹å·²è¿æ¥è®¾å¤‡
-echo 4.ä¿®æ”¹è®¾å¤‡è¿æ¥æ•°é‡(é»˜è®¤ä¿®æ”¹æˆæœ€å¤§å€¼ï¼š32)
-echo 5.å…³äº
+echo 1.¿ªÆô/¹Ø±ÕÈÈµã
+echo 2.ĞŞ¸ÄÈÈµãÉèÖÃ
+echo 3.²é¿´ÒÑÁ¬½ÓÉè±¸
+echo 4.ĞŞ¸ÄÉè±¸Á¬½ÓÊıÁ¿(Ä¬ÈÏĞŞ¸Ä³É×î´óÖµ£º32)
+echo 5.¹ØÓÚ
 echo =====================
-set /p input=è¯·è¾“å…¥ä½ è¦æ‰§è¡Œçš„æ“ä½œï¼š
+set /p input=ÇëÊäÈëÄãÒªÖ´ĞĞµÄ²Ù×÷£º
 if %input% equ 1 goto enaordishotspot
 if %input% equ 2 goto changehotspotsettings
 if %input% equ 3 goto showdevice
@@ -23,10 +23,10 @@ goto menu
 :enaordishotspot
 cls
 echo =====================
-echo 1.å¼€å¯
-echo 2.å…³é—­
+echo 1.¿ªÆô
+echo 2.¹Ø±Õ
 echo =====================
-set /p input=è¯·è¾“å…¥ä½ è¦æ‰§è¡Œçš„æ“ä½œï¼š
+set /p input=ÇëÊäÈëÄãÒªÖ´ĞĞµÄ²Ù×÷£º
 if %input% equ 1 powershell.exe -executionpolicy remotesigned -File "%cd%\start.ps1"
 if %input% equ 2 powershell.exe -executionpolicy remotesigned -File "%cd%\stop.ps1"
 pause
@@ -34,13 +34,13 @@ goto menu
 
 :changehotspotsettings
 cls
-IF "%ver%" LSS "10.0.19041*]" (echo éœ€è¦Win10 2004åŠä»¥ä¸Šæ“ä½œç³»ç»Ÿæ‰èƒ½ä½¿ç”¨æ­¤åŠŸèƒ½ï¼&& pause && goto menu)
-set /p name=è¯·è¾“å…¥çƒ­ç‚¹åç§°ï¼š
-set /p pass=è¯·è¾“å…¥çƒ­ç‚¹å¯†ç ï¼š
+IF "%ver%" LSS "10.0.19041*]" (echo ĞèÒªWin10 2004¼°ÒÔÉÏ²Ù×÷ÏµÍ³²ÅÄÜÊ¹ÓÃ´Ë¹¦ÄÜ£¡&& pause && goto menu)
+set /p name=ÇëÊäÈëÈÈµãÃû³Æ£º
+set /p pass=ÇëÊäÈëÈÈµãÃÜÂë£º
 echo 1. 2.4Ghz
 echo 2. 5Ghz
-echo 3.è‡ªåŠ¨
-set /p band=è¯·é€‰æ‹©çƒ­ç‚¹é¢‘æ®µï¼š
+echo 3.×Ô¶¯
+set /p band=ÇëÑ¡ÔñÈÈµãÆµ¶Î£º
 if %band% equ 1 set band=TwoPointFourGigahertz
 if %band% equ 2 set band=FiveGigahertz
 if %band% equ 3 set band=Auto
@@ -53,14 +53,14 @@ goto menu
 cls
 powershell.exe -executionpolicy remotesigned -File "%cd%\status.ps1">nul
 for /f %%I in ('type status.txt') do (set status=%%I)
-IF "%status%" EQU "Off" (echo "çƒ­ç‚¹å·²ç»å…³é—­ï¼Œæ— æ³•æŸ¥çœ‹ï¼" && pause && goto menu)
+IF "%status%" EQU "Off" (echo "ÈÈµãÒÑ¾­¹Ø±Õ£¬ÎŞ·¨²é¿´£¡" && pause && goto menu)
 powershell.exe -executionpolicy remotesigned -File "%cd%\ClientCount.ps1">nul
 powershell.exe -executionpolicy remotesigned -File "%cd%\MaxClientCount.ps1">nul
 for /f %%I in ('type ClientCount.txt') do (set Client=%%I)
 for /f %%I in ('type MaxClientCount.txt') do (set MaxClient=%%I)
 echo =====================
-echo å½“å‰å·²è¿æ¥çš„è®¾å¤‡æ•°ï¼š%Client%
-echo æœ€å¤§æ”¯æŒè¿æ¥è®¾å¤‡æ•°ï¼š%MaxClient%
+echo µ±Ç°ÒÑÁ¬½ÓµÄÉè±¸Êı£º%Client%
+echo ×î´óÖ§³ÖÁ¬½ÓÉè±¸Êı£º%MaxClient%
 powershell.exe -executionpolicy remotesigned -File "%cd%\device.ps1"
 echo =====================
 pause
@@ -68,7 +68,7 @@ goto menu
 
 :about
 cls
-echo æºä»£ç åœ°å€ï¼šhttps://github.com/2096779623/hotspotmanager
+echo Ô´´úÂëµØÖ·£ºhttps://github.com/2096779623/hotspotmanager
 echo.
 type LICENSE
 pause
